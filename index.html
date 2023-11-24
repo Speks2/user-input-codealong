@@ -1,39 +1,78 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/css/site.css">
-    <script src="assets/js/site.js" defer></script>
+  <title>Login</title>
+  <style>
+    .input-field {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      padding: 5px;
+      width: 200px;
+    }
+    .error {
+      border: 1px solid red !important;
+    }
+    .error-message {
+      color: red;
+      font-size: 12px;
+      display: none;
+    }
+  </style>
 </head>
-
 <body>
+  <form onsubmit="return validateForm()">
+    <div>
+      <input type="text" id="username" class="input-field" placeholder="Fornavn">
+      <div id="username-error" class="error-message">Fornavn skal bruges</div>
+    </div>
+    <div>
+      <input type="text" id="password" class="input-field" placeholder="Efternavn">
+      <div id="password-error" class="error-message">Efternavn skal bruges</div>
+    </div>
+    <div>
+        <input type="adress" id="password" class="input-field" placeholder="Adresse">
+        <div id="password-error" class="error-message">Adresse skal bruges</div>
+      </div>
+    <div>
+        <input type="email" id="password" class="input-field" placeholder="Email">
+        <div id="password-error" class="error-message">Email skal bruges</div>
+      </div>
+    <div>
+        <input type="number" id="password" class="input-field" placeholder="Postnummer">
+        <div id="password-error" class="error-message">Kun nummer skal bruges</div>
+      </div>
+    <input type="submit" value="Login">
+  </form>
 
+  <script>
+    function validateForm() {
+      var username = document.getElementById('username');
+      var password = document.getElementById('password');
+      var usernameError = document.getElementById('username-error');
+      var passwordError = document.getElementById('password-error');
 
-    <section id="tilMeld">
-        <form>
-            <input id="name" type="text" placeholder="dit navn">
-            <input id="email" type="text" placeholder="din email">
-            <input id="zipCode" type="text" placeholder="dit postnr">
+      if (username.value.trim() === '') {
+        username.classList.add('error');
+        usernameError.style.display = 'block';
+      } else {
+        username.classList.remove('error');
+        usernameError.style.display = 'none';
+      }
 
-            <button id="submitButton">tilmeld dig her</button>
+      if (password.value.trim() === '') {
+        password.classList.add('error');
+        passwordError.style.display = 'block';
+      } else {
+        password.classList.remove('error');
+        passwordError.style.display = 'none';
+      }
 
-        </form>
+      if (username.value.trim() === '' || password.value.trim() === '') {
+        return false; 
+      }
 
-
-
-    </section>
-
-
-
+      return true; 
+    }
+  </script>
 </body>
-
 </html>
